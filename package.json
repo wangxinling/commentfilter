@@ -4,12 +4,19 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js",
+    "debug": "nodemon --inspect=0.0.0.0:9229 app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "connect-ensure-login": "^0.1.1",
     "ejs": "^2.3.4",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.11.18",
+    "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
+    "passport-local-mongoose": "^6.1.0"
   }
 }
