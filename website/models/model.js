@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 const passport = require('passport');
 
-const uri = "mongodb+srv://SIT780:171221@cluster0.evy6f.mongodb.net/SIT780Auth?retryWrites=true&w=majority";
+const uri = "mongodb://mike:pass123@mongodb:27017/SIT780";
 
 mongoose.connect(uri,
   { useNewUrlParser: true, useUnifiedTopology: true });
@@ -25,5 +25,5 @@ passport.serializeUser(UserDetails.serializeUser());
 passport.deserializeUser(UserDetails.deserializeUser());
 
 // UserDetails.register({username:'paul', active: false}, 'paul');
-// UserDetails.register({username:'jay', active: false}, 'jay');
+UserDetails.register({username:'jay', active: false}, 'jay');
 // UserDetails.register({username:'roy', active: false}, 'roy');

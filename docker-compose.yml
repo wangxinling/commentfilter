@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  mongodb:
+    container_name: mongo_node
+    image: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=SIT780
+      - MONGO_INITDB_ROOT_USERNAME=wang
+      - MONGO_INITDB_ROOT_PASSWORD=pass12345
+    volumes: 
+      - ./mongoDB/node_project:/data/db
+      - ./mongoDB/setup.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    ports: 
+      - "27017:27017"
+  tensorflow:
+    build:
+      context: ./tensorflowService
+    ports: 
+      - "8080"
+
+  nodewebsite:
+    build:
+      context: ./website
+    ports:
+      - "3000"
+
+  loadbalancer:
+    restart: always
+    build:
+      context: ./loadbalancer
+    ports:
+      - "80:80"
