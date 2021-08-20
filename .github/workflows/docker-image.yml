@@ -17,18 +17,18 @@ jobs:
     - name: Login to DockerHub
       run: echo ${{ secrets.DOCKER_PASSWORD}} | docker login -u ${{ secrets.DOCKER_USERNAME}} --password-stdin
     - name: Build the Docker images
-      commands: 
-        - docker-compose build
-        - docker tag mongo ${{ secrets.DOCKER_USERNAME }}/mongodb
-        - docker tag commentifilter_tensorflow ${{ secrets.DOCKER_USERNAME }}/tensorflow
-        - docker tag commentifilter_nodewebsite ${{ secrets.DOCKER_USERNAME }}/nodewebsite
-        - docker tag commentifilter_loadbalancer ${{ secrets.DOCKER_USERNAME }}/loadbalancer
+
+      run: docker-compose build
+      run: docker tag mongo ${{ secrets.DOCKER_USERNAME }}/mongodb
+      run: docker tag commentifilter_tensorflow ${{ secrets.DOCKER_USERNAME }}/tensorflow
+      run: docker tag commentifilter_nodewebsite ${{ secrets.DOCKER_USERNAME }}/nodewebsite
+      run: docker tag commentifilter_loadbalancer ${{ secrets.DOCKER_USERNAME }}/loadbalancer
 
     - name: Publish to Docker Hub
-      commands: 
-       - docker push ${{ secrets.DOCKER_USERNAME }}/mongodb
-       - docker push ${{ secrets.DOCKER_USERNAME }}/tensorflow
-       - docker push ${{ secrets.DOCKER_USERNAME }}/nodewebsite
-       - docker push ${{ secrets.DOCKER_USERNAME }}/loadbalancer
+
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/mongodb
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/tensorflow
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/nodewebsite
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/loadbalancer
 
       
