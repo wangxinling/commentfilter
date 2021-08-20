@@ -19,14 +19,12 @@ jobs:
     - name: Build the Docker images
       run: |
         docker-compose build
-        docker tag mongo ${{ secrets.DOCKER_USERNAME }}/mongodb
         docker tag commentifilter_tensorflow ${{ secrets.DOCKER_USERNAME }}/tensorflow
         docker tag commentifilter_nodewebsite ${{ secrets.DOCKER_USERNAME }}/nodewebsite
         docker tag commentifilter_loadbalancer ${{ secrets.DOCKER_USERNAME }}/loadbalancer
 
     - name: Publish to Docker Hub
       run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/mongodb
         docker push ${{ secrets.DOCKER_USERNAME }}/tensorflow
         docker push ${{ secrets.DOCKER_USERNAME }}/nodewebsite
         docker push ${{ secrets.DOCKER_USERNAME }}/loadbalancer
