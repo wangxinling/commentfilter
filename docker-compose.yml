@@ -19,10 +19,14 @@ services:
       - "8080"
 
   nodewebsite:
+
     build:
       context: ./website
     ports:
       - "3000"
+    depends_on:
+      - mongodb
+      - tensorflow
 
   loadbalancer:
     restart: always
