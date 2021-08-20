@@ -25,9 +25,10 @@ jobs:
         - docker tag commentifilter_loadbalancer ${{ secrets.DOCKER_USERNAME }}/loadbalancer
 
     - name: Publish to Docker Hub
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/mongodb
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/tensorflow
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/nodewebsite
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/loadbalancer
+      commands: 
+       - docker push ${{ secrets.DOCKER_USERNAME }}/mongodb
+       - docker push ${{ secrets.DOCKER_USERNAME }}/tensorflow
+       - docker push ${{ secrets.DOCKER_USERNAME }}/nodewebsite
+       - docker push ${{ secrets.DOCKER_USERNAME }}/loadbalancer
 
       
