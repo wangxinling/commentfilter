@@ -22,9 +22,8 @@ app.use(expressSession);
 app.use(passport.initialize());
 app.use(passport.session());
 
-const router = require("./routes/route");
 
-app.use("/",router);
+app.use("/",routes);
 var port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log('App listening on port  http://localhost:' + port));

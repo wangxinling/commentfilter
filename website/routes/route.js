@@ -6,35 +6,16 @@ const router = require('express').Router();
 const passport = require('passport');
 const connectEnsureLogin = require('connect-ensure-login');
 
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local',
-    (err, user, info) => {
-      if (err) {
-        return next(err);
-      }
+const register = require('./register');
+const login = require('./login');
 
-      if (!user) {
-        return res.redirect('/login?info=' + info.message);
-      }
+router.use('/login', login);
+router.use('/register', register);
 
-      req.logIn(user, function (err) {
-        if (err) {
-          return next(err);
-        }
-
-        return res.redirect('/');
-      });
-
-    })(req, res, next);
-});
-
-router.get('/login',
-  (req, res) => res.sendFile('/public/html/login.html', { root: "./" })
-);
 
 router.get('/',
   connectEnsureLogin.ensureLoggedIn(),
-  (req, res) => res.sendFile('/public/html/index.html', { root: "./" })
+  (req, res) => res.render("layout/index",{template: 'login',isLogined: true, errorMessage:null})
 
 );
 

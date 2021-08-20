@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Garden</title>
+
+    <!-- Materialze-->
+    <!-- Compiled from sass files for changing the theme colour  -->
+    <link rel="stylesheet" href="materialize.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+
+    <!-- Materialize icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<!-- this style for keep full screen -->
+<body style="min-height:100vh;margin: 0;padding: 0; display: flex;flex-direction: column;">
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Logo</a>
+                <ul id="nav-mobile" class="right">
+                    <li><a href="/">Tips</a></li>
+                    <li><a href="/plants">MyPlants</a></li>
+                    <li><a href="/map">MyPlan</a></li>
+                    <li><a href="/test">about</a></li>
+                    <!-- check login state to show different buttons -->
+                    <% if (isLogined) { %>
+                        <li><a href="/logout" class="waves-effect waves-light btn">Logout<i class="material-icons right">logout</i></a></li>
+                   <% }else{%> 
+                        <li><a href="/login" class="waves-effect waves-light btn">Login<i class="material-icons right">login</i></a></li>
+                    <% } %> 
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="grey lighten-4" style="flex-grow: 1;">
+
+        <%- include(`../${template}`) %>
+    
+    </main>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l4 s12"></div>
+            </div>
+        </div>
+ 
+        <div class="footer-copyright">
+            <div class="container">
+                © 2021 Copyright Mike Wang <a class="grey-text text-lighten-4 right" href="https://github.com/wangxinling/commentfilter">
+                <img src="assets/git-logo.svg" style="height: 20px; padding-right: 15px;">Github
+            </a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Compiled and minified JavaScript -->
+
+
+</body>
+
+</html>
