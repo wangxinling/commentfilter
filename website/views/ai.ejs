@@ -1,0 +1,36 @@
+<script>
+    
+    function getPrediction() {
+        var x = document.getElementById("demo");
+        var comment = document.getElementById("text");
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                x.innerHTML = " The toxic is "+this.responseText;
+            }
+        };
+        xhttp.open("GET", "/ai/prediction/"+ comment.value, true);
+
+        xhttp.send();  
+    }
+
+</script>
+<div class="container">
+    <h1 class="title">Prediction toxicity for comments</h1>
+
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="text" type="text" name="text" class="validate"> <label for="text">Input a comment</label>
+        </div>
+    </div>
+
+    <div class="row">
+    <div class="input-field col s12">
+        <button class="btn waves-effect waves-light" onclick="getPrediction()">
+            Submit <i class="material-icons right">send</i>
+        </button>
+        </div>
+    </div>
+    
+    <p id="demo"></p>
+</div>

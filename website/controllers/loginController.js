@@ -7,7 +7,7 @@ class LoginController {
     }
     // find the user and save a session for other pages
     login(req,res,next){
-      let data =req.body;
+
       passport.authenticate('local',
       (err, user, info) => {
         if (err) {
@@ -29,6 +29,20 @@ class LoginController {
   
       })(req,res,next);
  
+    }
+    logout(req,res,next){
+
+        passport.authenticate('local',
+          (err, user, info) => {
+            if (err) {
+              return next(err);
+            }
+      
+            req.logout();
+            return res.redirect('/');
+      
+          })(req, res, next);
+      
     }
 }
 

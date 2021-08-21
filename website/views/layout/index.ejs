@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Smart Garden</title>
+    <title>Commit Filter</title>
 
     <!-- Materialze-->
     <!-- Compiled from sass files for changing the theme colour  -->
@@ -25,13 +25,12 @@
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo">Logo</a>
                 <ul id="nav-mobile" class="right">
-                    <li><a href="/">Tips</a></li>
-                    <li><a href="/plants">MyPlants</a></li>
-                    <li><a href="/map">MyPlan</a></li>
-                    <li><a href="/test">about</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/youtube">YouTube</a></li>
+                    <li><a href="/ai">AIfilter</a></li>
                     <!-- check login state to show different buttons -->
                     <% if (isLogined) { %>
-                        <li><a href="/logout" class="waves-effect waves-light btn">Logout<i class="material-icons right">logout</i></a></li>
+                        <li><a href="/login/logout" class="waves-effect waves-light btn">Logout<i class="material-icons right">logout</i></a></li>
                    <% }else{%> 
                         <li><a href="/login" class="waves-effect waves-light btn">Login<i class="material-icons right">login</i></a></li>
                     <% } %> 
