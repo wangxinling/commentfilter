@@ -7,33 +7,22 @@ const email = "mikewang.xinling@gmail.com";
 const password = "123";
 
 
-const app = require("../../app");
+//  const app = require("../../app");
   
-  // before(function(done) {
 
-  // });
-describe('GET /login', function(){
-    it('uri that requires user to be not logged in', function(done){
+describe('GET /youtube', function(){
+    it('login', loginUser());
+    it('getComments', function(done){
+        
         server
-            .get('/')                       
-            .expect(302)
+            .get('/youtube/getcomments/n3-xqj4HwiQ')                       
+            .expect(200)
             .end(function(err, res){
                 if (err) return done(err);
                 console.log(res.body);
                 done()
             });
         });
-    it('login', loginUser());
-    it('uri that requires user to be logged in', function(done){
-    server
-        .get('/')                       
-        .expect(200)
-        .end(function(err, res){
-            if (err) return done(err);
-            console.log(res.body);
-            done()
-        });
-    });
 });
 
 

@@ -1,0 +1,56 @@
+<script>
+
+    function getComments() {
+        var x = document.getElementById("demo");
+        var videoID = document.getElementById("text");
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let html = " <table>\
+                            <thead>\
+                                <tr>\
+                                    <th>CommentID</th>\
+                                    <th>Text</th>\
+                                    <th>Toxicity</th>\
+                                </tr>\
+                            </thead>\
+                            <tbody>";
+                let bodyText = "";
+                var comments = JSON.parse(this.responseText);
+                for (let key in comments) {
+                    bodyText += "<tr>";
+                    bodyText += "<td>" + comments[key].commentID + "</td>";
+                    bodyText += "<td>" + comments[key].text + "</td>";
+                    bodyText += "<td>" + comments[key].isToxic + "</td>";
+                    bodyText += "</tr>";
+                }
+
+                html = html + bodyText + "</tbody></table>";
+                x.innerHTML = html;
+            }
+        };
+        xhttp.open("GET", "/youtube/getcomments/" + videoID.value, true);
+
+        xhttp.send();
+    }
+
+</script>
+<div class="container">
+    <h1 class="title">YouTube comments</h1>
+
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="text" type="text" name="text" class="validate"> <label for="text">Input a videoID</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s12">
+            <button class="btn waves-effect waves-light" onclick="getComments()">
+                Submit <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </div>
+
+    <p id="demo"></p>
+</div>
