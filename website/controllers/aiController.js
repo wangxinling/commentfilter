@@ -20,7 +20,8 @@ class aiController {
     async predictComment(text) {
         const options = {
             method: 'GET',
-            url: `http://localhost:8080/prediction/${text}`
+            url: `http://tensorflow:8080/prediction/${text}`
+            // url: `http://localhost:8080/prediction/${text}`
         };
         // the url for docker compose
         // url: `http://tensorflow:8080/prediction/${text}`

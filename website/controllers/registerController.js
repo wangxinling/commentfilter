@@ -8,20 +8,22 @@ class RegisterController {
   }
   async store(req, res) {
     const { username, email, password } = req.body;
-    // User.register({username:"jay", active: false},"jay");
 
-    const newUser = await new User({username: username,email:email,isAuthenticated:true});
+    const newUser = await new User({ username: username, email: email });
     User.register(newUser, password, (err) => {
       if (err) {
         console.log(err);
       }
-      else
-      {
-        passport.authenticate("local")(req, res, () => {
-          res.redirect('/');
+      else {
+        newUser.isAuthenticated = true;
+        newUser.save().then(err => {
+          passport.authenticate("local")(req, res, () => {
+            res.redirect('/');
+          });
+
         });
       }
-     
+
     });
   }
 }

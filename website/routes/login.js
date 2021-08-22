@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const LoginController = require("../controllers/LoginController");
+const LoginController = require("../controllers/loginController");
 const controller = new LoginController();
 
 router.get("/", controller.start); // show the page

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const RegisterController = require("../controllers/RegisterController");
+const RegisterController = require("../controllers/registerController");
 const controller = new RegisterController();
 
 router.get("/", controller.start); // show the page
